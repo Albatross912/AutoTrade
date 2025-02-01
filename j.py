@@ -89,11 +89,11 @@ all_trading_symbol_tokens = []
 
 # Define symbol and strike price ranges with expiry dates
 option_specs = [
-  # {"symbol": "SENSEX", "strike_prices": range(77400, 81301, 100), "expiry": "27dec2034"},
-    {"symbol": "NIFTY", "strike_prices": range(21850, 23801, 50), "expiry": "31jan2025"},
-   # {"symbol": "BANKNIFTY", "strike_prices": range(49400, 53301, 100), "expiry": "25dec2024"},
-   # {"symbol": "FINNIFTY", "strike_prices": range(23050, 25001, 50), "expiry": "01jan2025"},
-   # {"symbol": "MIDCPNIFTY", "strike_prices": range(12275, 13251, 25), "expiry": "31dec2024"}
+  # {"symbol": "SENSEX", "strike_prices": range(75200, 79100, 100), "expiry": "04feb2035"},
+    {"symbol": "NIFTY", "strike_prices": range(21850, 23801, 50), "expiry": "07feb2025"},
+   # {"symbol": "BANKNIFTY", "strike_prices": range(47000, 50900, 100), "expiry": "28feb2025"},
+   # {"symbol": "FINNIFTY", "strike_prices": range(21800, 25001, 50), "expiry": "27feb2025"},
+   # {"symbol": "MIDCPNIFTY", "strike_prices": range(11175, 12151, 25), "expiry": "28feb2025"}
 ]
 
 # Loop through each option specification and gather tokens
@@ -158,8 +158,8 @@ nest_asyncio.apply()
 logging.basicConfig(level=logging.INFO)
 
 # Your API ID and Hash from my.telegram.org
-api_id = 27412019
-api_hash = '53076f53c61caa3afcabfd5dc4bbe690'
+api_id = 28059844
+api_hash = '7ef57d924f83752e18736e32d2fcd7f1'
 
 # Your bot token from BotFather
 bot_token = '7824222086:AAHxmNIXsEINjaUEThp0FFP6KXOGgkW7yyw'
