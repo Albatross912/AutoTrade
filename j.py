@@ -14,7 +14,6 @@ def on_message(message):
 def on_error(error_message):
     print(error_message)
 
-
 def on_close(message):
     print(message)
 
@@ -90,11 +89,11 @@ all_trading_symbol_tokens = []
 
 # Define symbol and strike price ranges with expiry dates
 option_specs = [
-    {"symbol": "SENSEX", "strike_prices": range(75200, 80001, 100), "expiry": "22nov2034"},
-    {"symbol": "NIFTY", "strike_prices": range(22350, 24301, 50), "expiry": "29nov2024"},
-    {"symbol": "BANKNIFTY", "strike_prices": range(48200, 52101, 100), "expiry": "28nov2024"},
-    {"symbol": "FINNIFTY", "strike_prices": range(22250, 24201, 50), "expiry": "27nov2024"},
-    {"symbol": "MIDCPNIFTY", "strike_prices": range(11550, 12526, 25), "expiry": "26nov2024"}
+  # {"symbol": "SENSEX", "strike_prices": range(77400, 81301, 100), "expiry": "27dec2034"},
+    {"symbol": "NIFTY", "strike_prices": range(21850, 23801, 50), "expiry": "31jan2025"},
+   # {"symbol": "BANKNIFTY", "strike_prices": range(49400, 53301, 100), "expiry": "25dec2024"},
+   # {"symbol": "FINNIFTY", "strike_prices": range(23050, 25001, 50), "expiry": "01jan2025"},
+   # {"symbol": "MIDCPNIFTY", "strike_prices": range(12275, 13251, 25), "expiry": "31dec2024"}
 ]
 
 # Loop through each option specification and gather tokens
@@ -254,13 +253,13 @@ async def monitor_and_place_order(client, instrument_token, buy_price, trading_s
         print(f"LTP of {trading_symbol} : {ltp}")
         # Calculate stop loss and target prices
         stop_loss = buy_price - (0.10 * buy_price)  # 5% below the buy price
-        target = buy_price + (0.05 * buy_price)  # 5% above the buy price
+        target = buy_price +  (0.05 * buy_price)  # 5% above the buy price
 
         # Check if LTP hits stop loss or target
         if ltp <= stop_loss or ltp >= target:
             # If LTP hits stop loss or target, sell the position
             await sell_order_with_client(client, trading_symbol, quantity)
-            print(f"Sell order placed for {trading_symbol} at LTP {ltp} (Stop Loss or Target hit)")
+            print(f"Sell order placed for {trading_symbol} at LTP {ltp} buy price {buy_price} (Stop Loss or Target hit)")
             break  # Exit the loop after placing the sell order
 
         # Sleep for a short time before checking again
@@ -310,11 +309,11 @@ async def main():
                 stock_type, strike_price, option_type = match.groups()
 
                 symbol_map = {
-                    'N': ("NIFTY", 25),
-                    'BN': ("BANKNIFTY", 15),
-                    'MID': ("MIDCPNIFTY", 75),
-                    'SEN': ("SENSEX", 10),
-                    'FN': ("FINNIFTY", 25)
+                    'N': ("NIFTY", 375),
+                    'BN': ("BANKNIFTY", 390),
+                    'MID': ("MIDCPNIFTY", 400),
+                    'SEN': ("SENSEX", 200),
+                    'FN': ("FINNIFTY", 400)
                 }
                 symbol, quantity = symbol_map.get(stock_type, (None, 0))
 
